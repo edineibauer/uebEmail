@@ -1,9 +1,9 @@
 <?php
 
 $dados = [];
-if(!empty($route->getVar())){
+if(!empty($link->getVariaveis())){
     $read = new \ConnCrud\Read();
-    $read->exeRead("email_list", "WHERE email = :em", "em={$route->getVar()[0]}");
+    $read->exeRead("email_list", "WHERE email = :em", "em={$link->getVariaveis()[0]}");
     if($read->getResult()) {
         $dados = $read->getResult()[0];
         $dados['nome'] = explode(' ', $dados['nome'])[0];

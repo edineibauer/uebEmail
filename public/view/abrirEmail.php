@@ -1,8 +1,8 @@
 <?php
 
-if(!empty($route->getVar())){
+if(!empty($link->getVariaveis())){
     $read = new \ConnCrud\Read();
-    $read->exeRead("email_envio", "WHERE id = :id", "id={$route->getVar()[0]}");
+    $read->exeRead("email_envio", "WHERE id = :id", "id={$link->getVariaveis()[0]}");
     if($read->getResult()) {
 
         $dados = $read->getResult()[0];
