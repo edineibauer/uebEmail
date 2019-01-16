@@ -5,6 +5,7 @@
     "nome": "Nome Destinat\u00e1rio",
     "column": "nome_destinatario",
     "size": "127",
+    "minimo": "false",
     "key": "title",
     "group": "",
     "unique": "false",
@@ -12,20 +13,23 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": ""
     },
     "form": {
-      "input": "text",
+      "input": "input",
+      "type": "text",
       "cols": "12",
       "colm": "6",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -43,6 +47,7 @@
     "nome": "Email Destinat\u00e1rio",
     "column": "email_destinatario",
     "size": "127",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -50,20 +55,23 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": "email"
     },
     "form": {
-      "input": "email",
+      "input": "input",
+      "type": "email",
       "cols": "12",
       "colm": "6",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -81,6 +89,7 @@
     "nome": "Assunto",
     "column": "assunto",
     "size": "false",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -88,20 +97,23 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": ""
     },
     "form": {
-      "input": "text",
+      "input": "input",
+      "type": "text",
       "cols": "12",
       "colm": "9",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -119,6 +131,7 @@
     "nome": "Mensagem",
     "column": "mensagem",
     "size": "4095",
+    "minimo": "false",
     "key": "description",
     "group": "",
     "unique": "false",
@@ -126,20 +139,23 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": ""
     },
     "form": {
       "input": "textarea",
+      "type": "text",
       "cols": "12",
       "colm": "12",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -156,7 +172,8 @@
     "type": "json",
     "nome": "Imagem Capa",
     "column": "imagem_capa",
-    "size": "512",
+    "size": "1",
+    "minimo": "false",
     "key": "source",
     "group": "",
     "unique": "false",
@@ -164,40 +181,60 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "png",
-        "jpg",
-        "jpeg",
-        "gif",
-        "bmp",
-        "tif",
-        "tiff",
-        "psd",
-        "svg"
-      ],
-      "names": [
-        "png",
-        "jpg",
-        "jpeg",
-        "gif",
-        "bmp",
-        "tif",
-        "tiff",
-        "psd",
-        "svg"
+      "regexp": "",
+      "options": [
+        {
+          "option": "png",
+          "name": "png"
+        },
+        {
+          "option": "jpg",
+          "name": "jpg"
+        },
+        {
+          "option": "jpeg",
+          "name": "jpeg"
+        },
+        {
+          "option": "gif",
+          "name": "gif"
+        },
+        {
+          "option": "bmp",
+          "name": "bmp"
+        },
+        {
+          "option": "tif",
+          "name": "tif"
+        },
+        {
+          "option": "tiff",
+          "name": "tiff"
+        },
+        {
+          "option": "psd",
+          "name": "psd"
+        },
+        {
+          "option": "svg",
+          "name": "svg"
+        }
       ],
       "validate": ""
     },
     "form": {
       "input": "file",
+      "type": "text",
       "cols": "12",
       "colm": "6",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -215,6 +252,7 @@
     "nome": "Link do Bot\u00e3o",
     "column": "link_do_botao",
     "size": "254",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -222,20 +260,23 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "\/^https?:\\\/\\\//",
-      "values": "",
-      "names": "",
+      "regexp": "^https?:\\\/\\\/",
+      "options": "",
       "validate": ""
     },
     "form": {
-      "input": "text",
+      "input": "input",
+      "type": "text",
       "cols": "12",
       "colm": "6",
       "coll": "",
       "class": "padding-small",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -253,6 +294,7 @@
     "nome": "Texto do Bot\u00e3o",
     "column": "texto_do_botao",
     "size": "false",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -260,20 +302,23 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": ""
     },
     "form": {
-      "input": "text",
+      "input": "input",
+      "type": "text",
       "cols": "12",
       "colm": "6",
       "coll": "",
       "class": "padding-small",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -291,6 +336,7 @@
     "nome": "Template",
     "column": "template",
     "size": "false",
+    "minimo": "false",
     "key": "list",
     "group": "relation",
     "unique": "false",
@@ -298,13 +344,13 @@
     "update": "true",
     "relation": "email_templates",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": ""
     },
     "form": {
       "input": "list",
+      "type": "text",
       "cols": "12",
       "colm": "12",
       "coll": "",
@@ -321,7 +367,8 @@
         "1": "",
         "2": "",
         "3": ""
-      }
+      },
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -339,6 +386,7 @@
     "nome": "Data de Envio",
     "column": "data_de_envio",
     "size": "false",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -346,20 +394,23 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "\/^\\d{4}-\\d{2}-\\d{2}(\\s|T)\\d{2}:\\d{2}(:\\d{2})*$\/",
-      "values": "",
-      "names": "",
+      "regexp": "^\\d{4}-\\d{2}-\\d{2}(\\s|T)\\d{2}:\\d{2}(:\\d{2})*$",
+      "options": "",
       "validate": ""
     },
     "form": {
-      "input": "datetime",
+      "input": "input",
+      "type": "datetime-local",
       "cols": "12",
       "colm": "3",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -377,6 +428,7 @@
     "nome": "Email Aberto",
     "column": "email_aberto",
     "size": "1",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -384,26 +436,32 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "0",
-        "1"
-      ],
-      "names": [
-        "n\u00e3o",
-        "sim"
+      "regexp": "",
+      "options": [
+        {
+          "option": "0",
+          "name": "não"
+        },
+        {
+          "option": "1",
+          "name": "sim"
+        }
       ],
       "validate": ""
     },
     "form": {
       "input": "switch",
+      "type": "text",
       "cols": "6",
       "colm": "2",
       "coll": "",
       "class": "padding-tiny disabled",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -421,6 +479,7 @@
     "nome": "Email Clicado",
     "column": "email_clicado",
     "size": "1",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -428,26 +487,32 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "0",
-        "1"
-      ],
-      "names": [
-        "n\u00e3o",
-        "sim"
+      "regexp": "",
+      "options": [
+        {
+          "option": "0",
+          "name": "não"
+        },
+        {
+          "option": "1",
+          "name": "sim"
+        }
       ],
       "validate": ""
     },
     "form": {
       "input": "switch",
+      "type": "text",
       "cols": "6",
       "colm": "2",
       "coll": "",
       "class": "padding-tiny disabled",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -465,6 +530,7 @@
     "nome": "Email Entregue",
     "column": "email_entregue",
     "size": "1",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -472,26 +538,32 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "0",
-        "1"
-      ],
-      "names": [
-        "n\u00e3o",
-        "sim"
+      "regexp": "",
+      "options": [
+        {
+          "option": "0",
+          "name": "n\u00e3o"
+        },
+        {
+          "option": "1",
+          "name": "sim"
+        }
       ],
       "validate": ""
     },
     "form": {
       "input": "switch",
+      "type": "text",
       "cols": "6",
       "colm": "2",
       "coll": "",
       "class": "padding-tiny disabled",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -509,6 +581,7 @@
     "nome": "Separa\u00e7\u00e3o",
     "column": "separacao",
     "size": "100",
+    "minimo": "false",
     "key": "information",
     "group": "",
     "unique": "false",
@@ -516,20 +589,23 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": ""
     },
     "form": {
       "input": "span",
+      "type": "text",
       "cols": "12",
       "colm": "",
       "coll": "",
       "class": "",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -546,7 +622,8 @@
     "type": "json",
     "nome": "Background",
     "column": "background",
-    "size": "512",
+    "size": "1",
+    "minimo": "false",
     "key": "source",
     "group": "",
     "unique": "false",
@@ -554,40 +631,60 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "png",
-        "jpg",
-        "jpeg",
-        "gif",
-        "bmp",
-        "tif",
-        "tiff",
-        "psd",
-        "svg"
-      ],
-      "names": [
-        "png",
-        "jpg",
-        "jpeg",
-        "gif",
-        "bmp",
-        "tif",
-        "tiff",
-        "psd",
-        "svg"
+      "regexp": "",
+      "options": [
+        {
+          "option": "png",
+          "name": "png"
+        },
+        {
+          "option": "jpg",
+          "name": "jpg"
+        },
+        {
+          "option": "jpeg",
+          "name": "jpeg"
+        },
+        {
+          "option": "gif",
+          "name": "gif"
+        },
+        {
+          "option": "bmp",
+          "name": "bmp"
+        },
+        {
+          "option": "tif",
+          "name": "tif"
+        },
+        {
+          "option": "tiff",
+          "name": "tiff"
+        },
+        {
+          "option": "psd",
+          "name": "psd"
+        },
+        {
+          "option": "svg",
+          "name": "svg"
+        }
       ],
       "validate": ""
     },
     "form": {
       "input": "file",
+      "type": "text",
       "cols": "12",
       "colm": "6",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -605,6 +702,7 @@
     "nome": "Email Enviado",
     "column": "email_enviado",
     "size": "1",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -612,26 +710,32 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "0",
-        "1"
-      ],
-      "names": [
-        "desativado",
-        "ativado"
+      "regexp": "",
+      "options": [
+        {
+          "option": "0",
+          "name": "desativado"
+        },
+        {
+          "option": "1",
+          "name": "ativado"
+        }
       ],
       "validate": ""
     },
     "form": {
       "input": "switch",
+      "type": "text",
       "cols": "6",
       "colm": "2",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -649,6 +753,7 @@
     "nome": "Email Spam",
     "column": "email_spam",
     "size": "1",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -656,26 +761,32 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "0",
-        "1"
-      ],
-      "names": [
-        "n\u00e3o",
-        "sim"
+      "regexp": "",
+      "options": [
+        {
+          "option": "0",
+          "name": "n\u00e3o"
+        },
+        {
+          "option": "1",
+          "name": "sim"
+        }
       ],
       "validate": ""
     },
     "form": {
       "input": "switch",
+      "type": "text",
       "cols": "6",
       "colm": "2",
       "coll": "",
       "class": "padding-tiny disabled",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -693,6 +804,7 @@
     "nome": "Email Error",
     "column": "email_error",
     "size": "1",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -700,26 +812,32 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "0",
-        "1"
-      ],
-      "names": [
-        "n\u00e3o",
-        "sim"
+      "regexp": "",
+      "options": [
+        {
+          "option": "0",
+          "name": "n\u00e3o"
+        },
+        {
+          "option": "1",
+          "name": "sim"
+        }
       ],
       "validate": ""
     },
     "form": {
       "input": "switch",
+      "type": "text",
       "cols": "6",
       "colm": "2",
       "coll": "",
       "class": "padding-tiny disabled",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -732,132 +850,233 @@
     "indice": "19"
   },
   "21": {
-    "format": "sources",
+    "format": "source",
     "type": "json",
     "nome": "Anexos",
     "column": "anexos",
-    "size": "8196",
-    "key": "sources",
+    "size": "40",
+    "minimo": "false",
+    "key": "source",
     "group": "",
     "unique": "false",
     "default": "",
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": [
-        "png",
-        "jpg",
-        "jpeg",
-        "gif",
-        "bmp",
-        "tif",
-        "tiff",
-        "psd",
-        "svg",
-        "mp4",
-        "avi",
-        "mkv",
-        "mpeg",
-        "flv",
-        "wmv",
-        "mov",
-        "rmvb",
-        "vob",
-        "3gp",
-        "mpg",
-        "mp3",
-        "aac",
-        "ogg",
-        "wma",
-        "mid",
-        "alac",
-        "flac",
-        "wav",
-        "pcm",
-        "aiff",
-        "ac3",
-        "txt",
-        "doc",
-        "docx",
-        "dot",
-        "dotx",
-        "dotm",
-        "ppt",
-        "pptx",
-        "pps",
-        "potm",
-        "potx",
-        "pdf",
-        "xls",
-        "xlsx",
-        "xltx",
-        "rtf",
-        "rar",
-        "zip"
-      ],
-      "names": [
-        "png",
-        "jpg",
-        "jpeg",
-        "gif",
-        "bmp",
-        "tif",
-        "tiff",
-        "psd",
-        "svg",
-        "mp4",
-        "avi",
-        "mkv",
-        "mpeg",
-        "flv",
-        "wmv",
-        "mov",
-        "rmvb",
-        "vob",
-        "3gp",
-        "mpg",
-        "mp3",
-        "aac",
-        "ogg",
-        "wma",
-        "mid",
-        "alac",
-        "flac",
-        "wav",
-        "pcm",
-        "aiff",
-        "ac3",
-        "txt",
-        "doc",
-        "docx",
-        "dot",
-        "dotx",
-        "dotm",
-        "ppt",
-        "pptx",
-        "pps",
-        "potm",
-        "potx",
-        "pdf",
-        "xls",
-        "xlsx",
-        "xltx",
-        "rtf",
-        "rar",
-        "zip"
+      "regexp": "",
+      "options": [
+        {
+          "option": "png",
+          "name": "png"
+        },
+        {
+          "option": "jpg",
+          "name": "jpg"
+        },
+        {
+          "option": "jpeg",
+          "name": "jpeg"
+        },
+        {
+          "option": "gif",
+          "name": "gif"
+        },
+        {
+          "option": "bmp",
+          "name": "bmp"
+        },
+        {
+          "option": "tif",
+          "name": "tif"
+        },
+        {
+          "option": "tiff",
+          "name": "tiff"
+        },
+        {
+          "option": "psd",
+          "name": "psd"
+        },
+        {
+          "option": "svg",
+          "name": "svg"
+        },
+        {
+          "option": "mp4",
+          "name": "mp4"
+        },
+        {
+          "option": "avi",
+          "name": "avi"
+        },
+        {
+          "option": "mkv",
+          "name": "mkv"
+        },
+        {
+          "option": "mpeg",
+          "name": "mpeg"
+        },
+        {
+          "option": "flv",
+          "name": "flv"
+        },
+        {
+          "option": "wmv",
+          "name": "wmv"
+        },
+        {
+          "option": "mov",
+          "name": "mov"
+        },
+        {
+          "option": "rmvb",
+          "name": "rmvb"
+        },
+        {
+          "option": "vob",
+          "name": "vob"
+        },
+        {
+          "option": "3gp",
+          "name": "3gp"
+        },
+        {
+          "option": "mpg",
+          "name": "mpg"
+        },
+        {
+          "option": "mp3",
+          "name": "mp3"
+        },
+        {
+          "option": "aac",
+          "name": "aac"
+        },
+        {
+          "option": "ogg",
+          "name": "ogg"
+        },
+        {
+          "option": "wma",
+          "name": "wma"
+        },
+        {
+          "option": "mid",
+          "name": "mid"
+        },
+        {
+          "option": "alac",
+          "name": "alac"
+        },
+        {
+          "option": "flac",
+          "name": "flac"
+        },
+        {
+          "option": "wav",
+          "name": "wav"
+        },
+        {
+          "option": "pcm",
+          "name": "pcm"
+        },
+        {
+          "option": "aiff",
+          "name": "aiff"
+        },
+        {
+          "option": "ac3",
+          "name": "ac3"
+        },
+        {
+          "option": "txt",
+          "name": "txt"
+        },
+        {
+          "option": "doc",
+          "name": "doc"
+        },
+        {
+          "option": "docx",
+          "name": "docx"
+        },
+        {
+          "option": "dot",
+          "name": "dot"
+        },
+        {
+          "option": "dotx",
+          "name": "dotx"
+        },
+        {
+          "option": "dotm",
+          "name": "dotm"
+        },
+        {
+          "option": "ppt",
+          "name": "ppt"
+        },
+        {
+          "option": "pptx",
+          "name": "pptx"
+        },
+        {
+          "option": "pps",
+          "name": "pps"
+        },
+        {
+          "option": "potm",
+          "name": "potm"
+        },
+        {
+          "option": "potx",
+          "name": "potx"
+        },
+        {
+          "option": "pdf",
+          "name": "pdf"
+        },
+        {
+          "option": "xls",
+          "name": "xls"
+        },
+        {
+          "option": "xlsx",
+          "name": "xlsx"
+        },
+        {
+          "option": "xltx",
+          "name": "xltx"
+        },
+        {
+          "option": "rtf",
+          "name": "rtf"
+        },
+        {
+          "option": "rar",
+          "name": "rar"
+        },
+        {
+          "option": "zip",
+          "name": "zip"
+        }
       ],
       "validate": ""
     },
     "form": {
-      "input": "files",
+      "input": "file",
+      "type": "text",
       "cols": "12",
       "colm": "",
       "coll": "",
       "class": "padding-tiny",
       "style": "",
+      "atributos": "",
       "template": "",
-      "atributos": ""
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "datagrid": {
       "relevant": "",
@@ -875,6 +1094,7 @@
     "nome": "transmission_id",
     "column": "transmission_id",
     "size": "127",
+    "minimo": "false",
     "key": "",
     "group": "",
     "unique": "false",
@@ -882,9 +1102,8 @@
     "update": "true",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": ""
     },
     "form": "false",
@@ -903,24 +1122,30 @@
     "nome": "id",
     "column": "id",
     "size": "",
+    "minimo": "false",
     "key": "identifier",
     "unique": "true",
     "default": "false",
     "update": "false",
     "relation": "",
     "allow": {
-      "regex": "",
-      "values": "",
-      "names": "",
+      "regexp": "",
+      "options": "",
       "validate": ""
     },
     "form": {
       "input": "hidden",
+      "type": "text",
       "cols": "12",
       "colm": "",
       "coll": "",
       "class": "",
-      "style": ""
+      "style": "",
+      "atributos": "",
+      "template": "",
+      "fields": "",
+      "defaults": "",
+      "orientation": 0
     },
     "select": [],
     "filter": []
