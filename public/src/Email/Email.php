@@ -368,8 +368,8 @@ class Email
             "home" => defined('HOME') ? HOME : "",
             "sitedesc" => defined('SITEDESC') ? SITEDESC : "",
             "sitesub" => defined('SITESUB') ? SITESUB : "",
-            "logo" => defined('LOGO') ? HOME . LOGO : "",
-            "favicon" => defined('FAVICON') ? HOME . FAVICON : "",
+            "logo" => defined('LOGO') ? LOGO : "",
+            "favicon" => defined('FAVICON') ? FAVICON : "",
             "date" => date('d/m/Y H:i', strtotime('now')),
             "theme" => $color,
             "themeBackground" => $background
