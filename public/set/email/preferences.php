@@ -6,7 +6,7 @@ $dados['email'] = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
 if(!empty($dados['email']) && !empty($dados['frequencia']) && !empty($dados['assuntos'])) {
 /*
-    $read = new \ConnCrud\Read();
+    $read = new \Conn\Read();
     $read->exeRead("email_list", "WHERE email = :em", "em={$dados['email']}");
     if($read->getResult())
         $dados['id'] = $read->getResult()[0]['id'];

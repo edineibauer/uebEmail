@@ -5,10 +5,10 @@ $dados['email'] = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
 if(!empty($dados['email']) && !empty($dados['razao'])) {
    /*
-    $read = new \ConnCrud\Read();
+    $read = new \Conn\Read();
     $read->exeRead("email_blacklist", "WHERE email = :em", "em={$dados['email']}");
     if($read->getResult()) {
-        $del = new \ConnCrud\Delete();
+        $del = new \Conn\Delete();
         $del->exeDelete("email_blacklist", "WHERE email = :mm", "mm={$dados['email']}");
     }
 

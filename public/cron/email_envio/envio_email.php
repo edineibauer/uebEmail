@@ -1,15 +1,15 @@
 <?php
 
-$read = new \ConnCrud\Read();
+$read = new \Conn\Read();
 $read->exeRead("email_envio", "WHERE (email_enviado = 0 || email_enviado IS NULL) && email_error IS NULL && data_de_envio <= NOW() ORDER BY data_de_envio ASC");
 if ($read->getResult()) {
 
-    $up = new \ConnCrud\Update();
+    $up = new \Conn\Update();
 
     // Para cada email disponível para ser enviado
     foreach ($read->getResult() as $email) {
 
-        $emailSend = new \EmailControl\Email();
+        $emailSend = new \Email\Email();
         try {
 
             $emailSend->setDestinatarioEmail($email['email_destinatario']);

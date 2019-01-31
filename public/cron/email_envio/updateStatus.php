@@ -8,8 +8,8 @@ use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
 $httpClient = new GuzzleAdapter(new Client());
 $sparky = new SparkPost($httpClient, ["key" => EMAILKEY]);
-$read = new \ConnCrud\Read();
-$up = new \ConnCrud\Update();
+$read = new \Conn\Read();
+$up = new \Conn\Update();
 
 $read->exeRead("email_envio", "WHERE (email_clicado = 0 || email_clicado IS NULL) && (email_error = 0 || email_error IS NULL)");
 if ($read->getResult()) {

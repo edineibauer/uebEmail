@@ -9,7 +9,7 @@ if($dados['email_enviado'] == 0) {
         "email_clicado" => 0,
         "email_error" => 0
     ];
-    $emailSend = new \EmailControl\Email();
+    $emailSend = new \Email\Email();
     try {
 
         $emailSend->setDestinatarioEmail($dados['email_destinatario']);
@@ -45,6 +45,6 @@ if($dados['email_enviado'] == 0) {
     if ($emailSend->getError())
         $resultData["email_error"] = 1;
 
-    $up = new \ConnCrud\Update();
+    $up = new \Conn\Update();
     $up->exeUpdate("email_envio", $resultData, "WHERE id = :id", "id={$dados['id']}");
 }

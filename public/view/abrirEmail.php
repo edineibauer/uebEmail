@@ -1,13 +1,13 @@
 <?php
 
 if(!empty($link->getVariaveis())){
-    $read = new \ConnCrud\Read();
+    $read = new \Conn\Read();
     $read->exeRead("email_envio", "WHERE id = :id", "id={$link->getVariaveis()[0]}");
     if($read->getResult()) {
 
         $dados = $read->getResult()[0];
 
-        $emailSend = new \EmailControl\Email();
+        $emailSend = new \Email\Email();
         $emailSend->setDestinatarioEmail($dados['email_destinatario']);
         $emailSend->setAssunto($dados['assunto']);
         $emailSend->setMensagem($dados['mensagem']);
