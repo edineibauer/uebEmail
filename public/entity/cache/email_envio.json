@@ -330,56 +330,6 @@
     "value": "",
     "indice": "9"
   },
-  "10": {
-    "format": "list",
-    "type": "int",
-    "nome": "Template",
-    "column": "template",
-    "size": "false",
-    "minimo": "false",
-    "key": "list",
-    "group": "relation",
-    "unique": "false",
-    "default": "",
-    "update": "true",
-    "relation": "email_templates",
-    "allow": {
-      "regexp": "",
-      "options": "",
-      "validate": ""
-    },
-    "form": {
-      "input": "list",
-      "type": "text",
-      "cols": "12",
-      "colm": "12",
-      "coll": "",
-      "class": "padding-tiny",
-      "style": "",
-      "template": "",
-      "atributos": "",
-      "fields": [
-        "1",
-        "2",
-        "3"
-      ],
-      "defaults": {
-        "1": "",
-        "2": "",
-        "3": ""
-      },
-      "orientation": 0
-    },
-    "datagrid": {
-      "relevant": "",
-      "gridm": "",
-      "gridl": ""
-    },
-    "select": "",
-    "filter": "",
-    "value": "",
-    "indice": "12"
-  },
   "12": {
     "format": "datetime",
     "type": "datetime",

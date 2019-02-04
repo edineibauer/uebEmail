@@ -27,9 +27,7 @@
   "extend_mult": null,
   "list": null,
   "list_mult": null,
-  "selecao": [
-    10
-  ],
+  "selecao": null,
   "selecao_mult": null,
   "checkbox_rel": null,
   "checkbox_mult": null,
