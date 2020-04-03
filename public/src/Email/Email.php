@@ -276,7 +276,7 @@ class Email
      */
     private function getTemplateHtml(): string
     {
-        if ($this->template) {
+        /*if ($this->template) {
             $read = new Read();
             $read->exeRead("email_template", "WHERE id = :id", "id={$this->template}");
             if ($read->getResult()) {
@@ -284,12 +284,12 @@ class Email
                 $template = pathinfo($url, PATHINFO_BASENAME);
                 $dirTemplate = pathinfo($url, PATHINFO_DIRNAME);
             }
-        }
+        }*/
 
-        if (!isset($template)) {
-            $dirTemplate = PATH_HOME . VENDOR . "email-control/public/tpl/model";
+//        if (!isset($template)) {
+            $dirTemplate = PATH_HOME . VENDOR . "email/public/tpl/model";
             $template = "content.tpl";
-        }
+//        }
 
         $this->setVariables($this->getVariablesDefault());
 
@@ -303,6 +303,7 @@ class Email
      * Retorna o Content (corpo) do email
      * @param string $dir
      * @param string $template
+     * @return string
      */
     private function getContent(string $dir, string $template): string
     {
@@ -333,7 +334,7 @@ class Email
     {
         try {
             $smart = new \Smarty();
-            $smart->setTemplateDir(PATH_HOME . VENDOR . "email-control/public/tpl/model");
+            $smart->setTemplateDir(PATH_HOME . VENDOR . "email/public/tpl/model");
 
             foreach ($this->variables as $name => $value)
                 $smart->assign($name, $value);
