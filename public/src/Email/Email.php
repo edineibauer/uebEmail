@@ -36,13 +36,15 @@ class Email
 
     public function __construct()
     {
+        $this->variables = [];
         if (defined("EMAIL")) {
             $this->remetenteNome = "Contato" . (defined('SITENAME') ? " " . SITENAME : "");
             $this->remetenteEmail = EMAIL;
             $this->destinatarioNome = "";
-            $this->variables = [];
             $this->anexo = [];
             $this->assunto = "Contato " . (defined('SITENAME') ? SITENAME : "");
+        } else {
+            throw new \Exception("Email não definido");
         }
     }
 

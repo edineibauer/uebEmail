@@ -6,6 +6,9 @@ use SparkPost\SparkPost;
 use GuzzleHttp\Client;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
+//deprecated
+die;
+
 if(defined('EMAILKEY') && !empty(EMAILKEY)) {
     $httpClient = new GuzzleAdapter(new Client());
     $sparky = new SparkPost($httpClient, ["key" => EMAILKEY]);

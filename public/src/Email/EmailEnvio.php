@@ -8,6 +8,7 @@ class EmailEnvio
     private $destinatarioNome;
     private $assunto;
     private $mensagem;
+    private $dataEnvio;
     private $imagem;
     private $background;
     private $btnLink;
@@ -37,6 +38,14 @@ class EmailEnvio
     public function setBackground($background): void
     {
         $this->background = $background;
+    }
+
+    /**
+     * @param mixed $dataEnvio
+     */
+    public function setDataEnvio($dataEnvio): void
+    {
+        $this->dataEnvio = $dataEnvio;
     }
 
     /**
@@ -183,7 +192,8 @@ class EmailEnvio
                 'email_destinatario' => $this->destinatarioEmail,
                 'nome_destinatario' => $this->destinatarioNome ?? "",
                 'assunto' => $this->assunto,
-                'mensagem' => $this->mensagem
+                'mensagem' => $this->mensagem,
+                'data_de_envio' => $this->dataEnvio ?? date("Y-m-d H:i:s")
             ];
 
             if($this->btnLink)
