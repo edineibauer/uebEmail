@@ -187,35 +187,39 @@ class EmailEnvio
     public function enviar()
     {
         if (!empty($this->destinatarioEmail)) {
-            $emailEnvio = new \Entity\Dicionario('email_envio');
-            $dados = [
-                'email_destinatario' => $this->destinatarioEmail,
-                'nome_destinatario' => $this->destinatarioNome ?? "",
-                'assunto' => $this->assunto,
-                'mensagem' => $this->mensagem,
-                'data_de_envio' => $this->dataEnvio ?? date("Y-m-d H:i:s")
-            ];
+            $teste = new \Conn\Read();
+            $teste->exeRead("email_envio", "WHERE email_destinatario = '{$this->destinatarioEmail}' && assunto = '{$this->assunto}' && mensagem = '{$this->mensagem}'");
+            if(!$teste->getResult()) {
+                $emailEnvio = new \Entity\Dicionario('email_envio');
+                $dados = [
+                    'email_destinatario' => $this->destinatarioEmail,
+                    'nome_destinatario' => $this->destinatarioNome ?? "",
+                    'assunto' => $this->assunto,
+                    'mensagem' => $this->mensagem,
+                    'data_de_envio' => $this->dataEnvio ?? date("Y-m-d H:i:s")
+                ];
 
-            if($this->btnLink)
-                $dados['link_do_botao'] = $this->btnLink;
+                if ($this->btnLink)
+                    $dados['link_do_botao'] = $this->btnLink;
 
-            if($this->btnText)
-                $dados['texto_do_botao'] = $this->btnText;
+                if ($this->btnText)
+                    $dados['texto_do_botao'] = $this->btnText;
 
-            if($this->imagem)
-                $dados['imagem_capa'] = $this->imagem;
+                if ($this->imagem)
+                    $dados['imagem_capa'] = $this->imagem;
 
-            if($this->background)
-                $dados['background'] = $this->background;
+                if ($this->background)
+                    $dados['background'] = $this->background;
 
-            if($this->anexos)
-                $dados['anexos'] = $this->anexos;
+                if ($this->anexos)
+                    $dados['anexos'] = $this->anexos;
 
-            if($this->template)
-                $dados['template'] = $this->template;
+                if ($this->template)
+                    $dados['template'] = $this->template;
 
-            $emailEnvio->setData($dados);
-            $emailEnvio->save();
+                $emailEnvio->setData($dados);
+                $emailEnvio->save();
+            }
         }
     }
 }
