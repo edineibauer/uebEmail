@@ -1,8 +1,8 @@
 <?php
 
-if(!empty($link->getVariaveis())){
+if(!empty($variaveis)){
     $read = new \Conn\Read();
-    $read->exeRead("email_envio", "WHERE id = :id", "id={$link->getVariaveis()[0]}");
+    $read->exeRead("email_envio", "WHERE id = :id", "id={$variaveis[0]}");
     if($read->getResult()) {
 
         $dados = $read->getResult()[0];

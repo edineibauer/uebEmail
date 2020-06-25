@@ -1,9 +1,9 @@
 <?php
 
 $dados = [];
-if(!empty($link->getVariaveis())){
+if(!empty($variaveis)){
     $read = new \Conn\Read();
-    $read->exeRead("email_list", "WHERE email = :em", "em={$link->getVariaveis()[0]}");
+    $read->exeRead("email_list", "WHERE email = :em", "em={$variaveis[0]}");
     if($read->getResult()) {
         $dados = $read->getResult()[0];
         $dados['nome'] = explode(' ', $dados['nome'])[0];
