@@ -2,7 +2,7 @@
 
 if (defined("EMAIL")) {
     $read = new \Conn\Read();
-    $read->exeRead("email_envio", "WHERE (email_enviado = 0 || email_enviado IS NULL) && email_error IS NULL && (data_de_envio <= NOW() || data_de_envio IS NULL) ORDER BY data_de_envio ASC");
+    $read->exeRead("email_envio", "WHERE (email_enviado = 0 || email_enviado IS NULL) && (email_error = 0 || email_error IS NULL) && (data_de_envio <= NOW() || data_de_envio IS NULL) ORDER BY data_de_envio ASC");
     if ($read->getResult()) {
 
         $up = new \Conn\Update();
