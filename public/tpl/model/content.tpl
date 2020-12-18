@@ -91,8 +91,8 @@
                                                                    data-saferedirecturl="https://www.google.com/url?q={(isset($link))? $link : $home}">
                                                                     <img align="center" alt=""
                                                                          src="{$image}"
-                                                                         width="400"
-                                                                         style="max-width:400px;padding-bottom:0;display:inline!important;vertical-align:bottom;border:0;height:auto;outline:none;text-decoration:none"
+                                                                         width="600"
+                                                                         style="max-width:600px;padding-bottom:0;display:inline!important;vertical-align:bottom;border:0;height:auto;outline:none;text-decoration:none"
                                                                          class="m_5372895143664279880mcnImage CToWUd">
                                                                 </a>
                                                             </td>
