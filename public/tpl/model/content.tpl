@@ -89,7 +89,7 @@
                                                                 <a href="{(isset($link))? $link : $home}"
                                                                    title="" target="_blank"
                                                                    data-saferedirecturl="https://www.google.com/url?q={(isset($link))? $link : $home}">
-                                                                    <img align="center" alt=""
+                                                                    <img align="center" alt="imagem para {$assunto}" title="{$assunto}"
                                                                          src="{$image}"
                                                                          width="600"
                                                                          style="max-width:600px;padding-bottom:0;display:inline!important;vertical-align:bottom;border:0;height:auto;outline:none;text-decoration:none"
