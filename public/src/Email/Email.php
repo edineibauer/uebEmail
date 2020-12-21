@@ -341,7 +341,7 @@ class Email
             foreach ($this->variables as $name => $value)
                 $smart->assign($name, $value);
 
-            $retorno = $smart->fetch("base.tpl");
+            $retorno = $smart->fetch("mensagem.tpl");
             $smart->clearAllAssign();
 
             return $retorno;
