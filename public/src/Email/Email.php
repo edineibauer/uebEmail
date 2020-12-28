@@ -341,7 +341,7 @@ class Email
             foreach ($this->variables as $name => $value)
                 $smart->assign($name, $value);
 
-            $retorno = $smart->fetch("mensagem.tpl");
+            $retorno = $smart->fetch($this->assunto === "Recuperação de Senha" ? "content.tpl" : "mensagem.tpl");
             $smart->clearAllAssign();
 
             return $retorno;
