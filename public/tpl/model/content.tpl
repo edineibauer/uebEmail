@@ -1,6 +1,6 @@
 <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"
        id="m_5372895143664279880bodyTable"
-       style="border-collapse:collapse;height:100%;margin:0;padding:0;width:100%;background-color:{$themeBackground}">
+       style="border-collapse:collapse;height:100%;margin:0;padding:0;width:100%;background-color:#444444">
     <tbody>
     <tr>
         <td align="center" valign="top" id="m_5372895143664279880bodyCell"
@@ -10,7 +10,7 @@
                 <tbody>
                 <tr>
                     <td align="center" valign="top" id="m_5372895143664279880templatePreheader"
-                        style="background:{$themeBackground} none no-repeat center/cover;background-color:{$themeBackground};background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:20px;padding-bottom:20px">
+                        style="background:#2a2a2a none no-repeat center/cover;background-color:#2a2a2a;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:20px;padding-bottom:20px">
 
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
                                class="m_5372895143664279880templateContainer"
@@ -37,7 +37,7 @@
                                                             <a href="{$home}" title="" target="_blank"
                                                                data-saferedirecturl="https://www.google.com/url?q={$home}">
                                                                 <img align="center" alt=""
-                                                                     src="{$logo}"
+                                                                     src="{$home}{$logo}"
                                                                      width="179"
                                                                      style="max-width:179px;padding-bottom:0;display:inline!important;vertical-align:bottom;border:0;height:auto;outline:none;text-decoration:none"
                                                                      class="m_5372895143664279880mcnImage CToWUd">
@@ -68,7 +68,7 @@
                             <tbody>
                             <tr>
                                 <td valign="top" class="m_5372895143664279880headerContainer">
-                                    {if isset($image)}
+                                    {if !empty($image)}
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%"
                                                class="m_5372895143664279880mcnImageBlock"
                                                style="min-width:100%;border-collapse:collapse">
@@ -160,13 +160,13 @@
                                                                 class="m_5372895143664279880mcnButtonContent"
                                                                 style="font-family:&quot;Open Sans&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:14px;">
                                                                 {if isset($link)}
-                                                                <a title="{$btn}"
-                                                                   href="{$link}"
-                                                                   style="font-weight:bold;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:block;font-size:20px;text-transform: uppercase;padding: 20px"
-                                                                   target="_blank"
-                                                                   data-saferedirecturl="https://www.google.com/url?q={$link}">
-                                                                    {$btn}
-                                                                </a>
+                                                                    <a title="{$btn}"
+                                                                       href="{$link}"
+                                                                       style="font-weight:bold;letter-spacing:normal;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;display:block;font-size:20px;text-transform: uppercase;padding: 20px"
+                                                                       target="_blank"
+                                                                       data-saferedirecturl="https://www.google.com/url?q={$link}">
+                                                                        {$btn}
+                                                                    </a>
                                                                 {else}
                                                                     {$btn}
                                                                 {/if}
