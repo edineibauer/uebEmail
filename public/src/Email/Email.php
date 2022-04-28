@@ -37,15 +37,11 @@ class Email
     public function __construct()
     {
         $this->variables = [];
-        if (defined("EMAIL")) {
-            $this->remetenteNome = "Contato" . (defined('SITENAME') ? " " . SITENAME : "");
-            $this->remetenteEmail = EMAIL;
-            $this->destinatarioNome = "";
-            $this->anexo = [];
-            $this->assunto = "Contato " . (defined('SITENAME') ? SITENAME : "");
-        } else {
-            throw new \Exception("Email não definido");
-        }
+        $this->remetenteNome = "";
+        $this->remetenteEmail = "";
+        $this->destinatarioNome = "";
+        $this->anexo = [];
+        $this->assunto = "";
     }
 
     /**
@@ -206,22 +202,27 @@ class Email
      */
     public function enviar()
     {
-        if (!empty($this->assunto) && !empty($this->destinatarioEmail) && !empty($this->mensagem)) {
-            //informações básicas presentes
+        if (!empty($this->destinatarioEmail) && !empty($this->mensagem)) {
 
-            $this->html = $this->getTemplateHtml();
+            //sparkpost ativo no sistema, utiliza-o para envio
+            $read = new Read();
+            $read->exeRead("configuracao_email", "WHERE id = 1");
+            if($read->getResult()) {
+                $config = $read->getResult()[0];
 
-            //verifica meio de envio
-            if (defined("EMAILKEY") && !empty(EMAILKEY) && defined("EMAIL") && !empty(EMAIL)) {
+                if(empty($this->remetenteNome))
+                    $this->remetenteNome = SITENAME;
+                if(empty($this->remetenteEmail))
+                    $this->remetenteEmail = $config["email_de_contato"];
+                if(empty($this->assunto))
+                    $this->assunto = "Contato " . SITENAME;
 
-                //sparkpost ativo no sistema, utiliza-o para envio
-                $this->sparkPost();
+                $this->html = $this->getTemplateHtml();
+
+                $this->sparkPost($config["sparkpost_key"]);
 
             } else {
-                if (defined("EMAIL") && !empty(EMAIL))
-                    $this->error = "Nenhum sistema de envio de email ativo. Vá em Integrações no menu de Dashboard e Ative SparkPost.";
-                else
-                    $this->error = "Email de Envio não identificado.";
+                $this->error = "Email não configurado.";
             }
         }
     }
@@ -245,11 +246,15 @@ class Email
      * ***************************************
      */
 
-    private function sparkPost()
+    /**
+     * @param string $key
+     * @return void
+     */
+    private function sparkPost(string $key)
     {
         try {
             $httpClient = new GuzzleAdapter(new Client());
-            $sparky = new SparkPost($httpClient, ['key' => EMAILKEY, 'async' => false]);
+            $sparky = new SparkPost($httpClient, ['key' => $key, 'async' => false]);
 
             $response = $sparky->transmissions->post([
                 'content' => [
@@ -278,24 +283,9 @@ class Email
      */
     private function getTemplateHtml(): string
     {
-        /*if ($this->template) {
-            $read = new Read();
-            $read->exeRead("email_template", "WHERE id = :id", "id={$this->template}");
-            if ($read->getResult()) {
-                $url = json_decode($read->getResult()[0]['template'], true)[0]['url'];
-                $template = pathinfo($url, PATHINFO_BASENAME);
-                $dirTemplate = pathinfo($url, PATHINFO_DIRNAME);
-            }
-        }*/
-
-//        if (!isset($template)) {
-            $dirTemplate = PATH_HOME . VENDOR . "email/public/tpl/model";
-            $template = "content.tpl";
-//        }
-
         $this->setVariables($this->getVariablesDefault());
 
-        $this->variables['content'] = $this->getContent($dirTemplate, $template);
+        $this->variables['content'] = $this->getContent(PATH_HOME . VENDOR . "email/public/tpl/model", "content.tpl");
 
         return $this->getHtml();
 

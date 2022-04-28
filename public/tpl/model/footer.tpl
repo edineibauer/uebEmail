@@ -40,32 +40,6 @@
                             </tr>
                             </tbody>
                         </table>
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%"
-                               class="m_5372895143664279880mcnDividerBlock"
-                               style="min-width:100%;border-collapse:collapse;table-layout:fixed!important">
-                            <tbody class="m_5372895143664279880mcnDividerBlockOuter">
-                            <tr>
-                                <td class="m_5372895143664279880mcnDividerBlockInner"
-                                    style="min-width:100%;padding:10px 18px">
-                                    <table class="m_5372895143664279880mcnDividerContent" border="0"
-                                           cellpadding="0" cellspacing="0" width="100%"
-                                           style="min-width:100%;border-top:2px solid {$themeBackground};border-collapse:collapse">
-                                        <tbody>
-                                        <tr>
-                                            <td style="padding-top: 10px;">
-                                                &reg; {$sitename}, {$date}<br/>
-                                                <a href="{$home}unsubscribeEmail/{$destinatarioEmail}" target="_blank" style="color: #999999; text-decoration: none;font-size:11px">
-                                                    remover inscrição
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
                     </td>
                 </tr>
                 </tbody>
