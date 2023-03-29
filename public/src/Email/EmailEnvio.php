@@ -188,7 +188,7 @@ class EmailEnvio
     {
         if (!empty($this->destinatarioEmail)) {
             $teste = new \Conn\Read();
-            $teste->exeRead("email_envio", "WHERE email_destinatario = '{$this->destinatarioEmail}' && assunto = '{$this->assunto}' && mensagem = '{$this->mensagem}'");
+            $teste->exeRead("email_envio", "WHERE email_destinatario = :dde && assunto = :aa && mensagem = :mm", ["dde" => $this->destinatarioEmail, "aa" => $this->assunto, "mm" => $this->mensagem]);
             if(!$teste->getResult()) {
                 $emailEnvio = new \Entity\Dicionario('email_envio');
                 $dados = [
