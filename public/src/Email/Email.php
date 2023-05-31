@@ -273,7 +273,7 @@ class Email
                 $this->error = $response->getStatusCode();
 
         } catch (\Exception $e) {
-            $this->error = 'Erro Inexperado ao enviar';
+            $this->error = 'Erro Inexperado ao enviar. ' . $e->getMessage();
         }
     }
 
