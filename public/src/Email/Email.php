@@ -30,6 +30,8 @@ class Email
 
     private $replyToEmail;
     private $replyToNome;
+    private $ip_pool;
+    private $ip_pool_privado;
 
     private $error;
     private $result;
@@ -42,6 +44,8 @@ class Email
         $this->destinatarioNome = "";
         $this->anexo = [];
         $this->assunto = "";
+        $this->ip_pool = null;
+        $this->ip_pool_privado = false;
     }
 
     /**
@@ -66,6 +70,23 @@ class Email
     public function setDestinatarioNome(string $nome)
     {
         $this->destinatarioNome = trim(strip_tags($nome));
+    }
+
+    /**
+     * @param string $ip_pool
+     * @return void
+     */
+    public function setIpPool(string $ip_pool): void
+    {
+        $this->ip_pool = strip_tags(trim($ip_pool));
+    }
+
+    /**
+     * @param false $ip_pool_privado
+     */
+    public function setIpPoolPrivado(bool $ip_pool_privado): void
+    {
+        $this->ip_pool_privado = $ip_pool_privado;
     }
 
     /**
@@ -206,14 +227,19 @@ class Email
 
             //sparkpost ativo no sistema, utiliza-o para envio
             $read = new Read();
-            $read->exeRead("configuracao_email", "WHERE id = 1");
+            $read->exeRead("configuracao_email", "ORDER BY id ASC LIMIT 1");
             if($read->getResult()) {
                 $config = $read->getResult()[0];
 
+                if(empty($this->ip_pool) && $this->ip_pool_privado)
+                    $this->setIpPool($config['ip_pool_privado']);
+
                 if(empty($this->remetenteNome))
                     $this->remetenteNome = SITENAME;
+
                 if(empty($this->remetenteEmail))
-                    $this->remetenteEmail = $config["email_de_contato"];
+                    $this->remetenteEmail = "contato@" . $config["dominio_de_envio"];
+
                 if(empty($this->assunto))
                     $this->assunto = "Contato " . SITENAME;
 
@@ -256,7 +282,7 @@ class Email
             $httpClient = new GuzzleAdapter(new Client());
             $sparky = new SparkPost($httpClient, ['key' => $key, 'async' => false]);
 
-            $response = $sparky->transmissions->post([
+            $dadosTransmission = [
                 'content' => [
                     'from' => ['name' => $this->remetenteNome, 'email' => $this->remetenteEmail],
                     'subject' => $this->assunto,
@@ -265,7 +291,12 @@ class Email
                     'attachments' => $this->anexo,
                 ],
                 'recipients' => $this->destinatarioEmail
-            ]);
+            ];
+
+            if(!empty($this->ip_pool))
+                $dadosTransmission['options'] = ['ip_pool' => $this->ip_pool];
+
+            $response = $sparky->transmissions->post($dadosTransmission);
 
             if ($response->getStatusCode() === 200)
                 $this->result = $response->getBody()['results']['id'];
