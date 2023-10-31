@@ -284,7 +284,7 @@ class Email
 
             $dadosTransmission = [
                 'content' => [
-                    'from' => ['name' => $this->remetenteNome, 'email' => $this->remetenteEmail],
+                    'from' => ['name' => trim($this->remetenteNome), 'email' => trim($this->remetenteEmail)],
                     'subject' => $this->assunto,
                     'html' => $this->html,
                     'text' => trim(strip_tags($this->mensagem)),
@@ -407,7 +407,7 @@ class Email
      */
     private function prepareNameFromEmail(string $email): string
     {
-        return ucwords(str_replace(['.', '_'], ' ', explode('@', $email)[0]));
+        return ucwords(str_replace(['.', '_'], ' ', explode('@', trim($email))[0]));
     }
 
 
