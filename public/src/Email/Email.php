@@ -231,7 +231,7 @@ class Email
             if($read->getResult()) {
                 $config = $read->getResult()[0];
 
-                if(empty($this->ip_pool) && $this->ip_pool_privado)
+                if(empty($this->ip_pool) && $this->ip_pool_privado && !empty($config['ip_pool_privado']))
                     $this->setIpPool($config['ip_pool_privado']);
 
                 if(empty($this->remetenteNome))
