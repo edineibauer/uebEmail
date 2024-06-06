@@ -24,6 +24,7 @@ class Email
     private $destinatarioNome;
     private $destinatarioEmail;
     private $anexo;
+    private $anexoIagente;
     private $variables;
     private $remetenteEmail;
     private $remetenteNome;
@@ -43,6 +44,7 @@ class Email
         $this->remetenteEmail = "";
         $this->destinatarioNome = "";
         $this->anexo = [];
+        $this->anexoIagente = [];
         $this->assunto = "";
         $this->ip_pool = null;
         $this->ip_pool_privado = false;
@@ -190,6 +192,11 @@ class Email
                     "type" => $anexo['type'],
                     "data" => base64_encode(file_get_contents(PATH_HOME . $anexo['url']))
                 ];
+                $this->anexoIagente[] = [
+                    "filename" => $anexo['name'],
+                    "type" => $anexo['type'],
+                    "content" => base64_encode(file_get_contents(PATH_HOME . $anexo['url']))
+                ];
             }
         }
     }
@@ -225,7 +232,6 @@ class Email
     {
         if (!empty($this->destinatarioEmail) && !empty($this->mensagem)) {
 
-            //sparkpost ativo no sistema, utiliza-o para envio
             $read = new Read();
             $read->exeRead("configuracao_email", "ORDER BY id ASC LIMIT 1");
             if($read->getResult()) {
@@ -245,7 +251,10 @@ class Email
 
                 $this->html = $this->getTemplateHtml();
 
-                $this->sparkPost($config["sparkpost_key"]);
+                if(!empty($config['iagente_key']))
+                    $this->iagentePost($config['iagente_key']);
+                elseif(!empty($config['sparkpost_key']))
+                    $this->sparkPost($config["sparkpost_key"]);
 
             } else {
                 $this->error = "Email não configurado.";
@@ -271,6 +280,57 @@ class Email
      * **********  PRIVATE METHODS  **********
      * ***************************************
      */
+
+    private function iagentePost(string $key)
+    {
+        $data = [
+            "api_user" => trim($this->remetenteEmail),
+            "api_key" => $key,
+            "to" => [
+                [
+                    "email" => $this->destinatarioEmail,
+                    "name" => $this->destinatarioNome
+                ]
+            ],
+            "from" => [
+                "name" => trim($this->remetenteNome),
+                "email" => trim($this->remetenteEmail)
+            ],
+            "subject" => $this->assunto,
+            "html" => $this->html,
+            "text" => trim(strip_tags($this->mensagem)),
+            "campanhaid" => md5(rand(9999999, 99999999) . time()),
+            "addheaders" => [
+                "x-priority" => "1"
+            ],
+        ];
+
+        if(!empty($this->anexoIagente))
+            $data["attachments"] = $this->anexoIagente;
+
+        $jsonData = json_encode($data);
+
+        $ch = curl_init('https://api.iagentesmtp.com.br/api/v3/send/');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($jsonData)
+        ]);
+
+        $response = curl_exec($ch);
+        if ($response === false) {
+            $this->error = 'Erro na requisição curl: ' . curl_error($ch);
+        } else {
+            $responseData = json_decode($response, true);
+            if ($responseData['status'] == 'ok')
+                $this->result = $data['campanhaid'];
+            else
+                $this->error = "Falha no envio: " . $responseData['message'];
+        }
+        curl_close($ch);
+    }
 
     /**
      * @param string $key
