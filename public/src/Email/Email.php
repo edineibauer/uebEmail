@@ -286,12 +286,7 @@ class Email
         $data = [
             "api_user" => trim($this->remetenteEmail),
             "api_key" => $key,
-            "to" => [
-                [
-                    "email" => $this->destinatarioEmail,
-                    "name" => $this->destinatarioNome
-                ]
-            ],
+            "to" => [],
             "from" => [
                 "name" => trim($this->remetenteNome),
                 "email" => trim($this->remetenteEmail)
@@ -304,6 +299,9 @@ class Email
                 "x-priority" => "1"
             ],
         ];
+
+        foreach ($this->destinatarioEmail as $item)
+            $data['to'][] = $item['address'];
 
         if(!empty($this->anexoIagente))
             $data["attachments"] = $this->anexoIagente;
