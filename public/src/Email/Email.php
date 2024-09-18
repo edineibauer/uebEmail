@@ -244,7 +244,7 @@ class Email
                     $this->remetenteNome = SITENAME;
 
                 if(empty($this->remetenteEmail))
-                    $this->remetenteEmail = "contato@" . $config["dominio_de_envio"];
+                    $this->remetenteEmail = "contato@" . (!empty($config["email_de_contato"]) ? explode("@", $config["email_de_contato"])[1] : SERVER);
 
                 if(empty($this->assunto))
                     $this->assunto = "Contato " . SITENAME;
