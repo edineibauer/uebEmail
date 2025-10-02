@@ -232,28 +232,40 @@ class Email
     {
         if (!empty($this->destinatarioEmail) && !empty($this->mensagem)) {
 
+            // PROTEÇÃO: Em ambiente DEV, bloquear envio para emails que não sejam galera.org@gmail.com
+            if (defined('DEV') && DEV) {
+                $emailsPermitidos = ['galera.org@gmail.com'];
+
+                if (!in_array(strtolower($this->destinatarioEmail), $emailsPermitidos)) {
+                    // Simular envio bem-sucedido (não envia de fato)
+                    $this->result = true;
+                    $this->error = null;
+                    return;
+                }
+            }
+
             $read = new Read();
             $read->exeRead("configuracao_email", "ORDER BY id ASC LIMIT 1");
-            if($read->getResult()) {
+            if ($read->getResult()) {
                 $config = $read->getResult()[0];
 
-                if(empty($this->ip_pool) && $this->ip_pool_privado && !empty($config['ip_pool_privado']))
+                if (empty($this->ip_pool) && $this->ip_pool_privado && !empty($config['ip_pool_privado']))
                     $this->setIpPool($config['ip_pool_privado']);
 
-                if(empty($this->remetenteNome))
+                if (empty($this->remetenteNome))
                     $this->remetenteNome = SITENAME;
 
-                if(empty($this->remetenteEmail))
+                if (empty($this->remetenteEmail))
                     $this->remetenteEmail = "contato@" . (!empty($config["email_de_contato"]) ? explode("@", $config["email_de_contato"])[1] : SERVER);
 
-                if(empty($this->assunto))
+                if (empty($this->assunto))
                     $this->assunto = "Contato " . SITENAME;
 
                 $this->html = $this->getTemplateHtml();
 
-                if(!empty($config['iagente_key']))
+                if (!empty($config['iagente_key']))
                     $this->iagentePost($config['iagente_key']);
-                elseif(!empty($config['sparkpost_key']))
+                elseif (!empty($config['sparkpost_key']))
                     $this->sparkPost($config["sparkpost_key"]);
 
             } else {
@@ -303,7 +315,7 @@ class Email
         foreach ($this->destinatarioEmail as $item)
             $data['to'][] = $item['address'];
 
-        if(!empty($this->anexoIagente))
+        if (!empty($this->anexoIagente))
             $data["attachments"] = $this->anexoIagente;
 
         $jsonData = json_encode($data);
@@ -351,7 +363,7 @@ class Email
                 'recipients' => $this->destinatarioEmail
             ];
 
-            if(!empty($this->ip_pool))
+            if (!empty($this->ip_pool))
                 $dadosTransmission['options'] = ['ip_pool' => $this->ip_pool];
 
             $response = $sparky->transmissions->post($dadosTransmission);
